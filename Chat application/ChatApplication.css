@@ -1,0 +1,392 @@
+/* https://boostedusa.com/
+
+fix body to continue as page size increases -- height: auto;
+*connect nav bar to body
+*add jva cookies to reset
+*
+*Zoom in and out fix
+, make sticky nav, feature tareqMode,  
+
+add process for server.
+
+@@@@@Chapter one: getting started
+*started with plane research, went on geeks, installed VS 2019, getting started with Winsock
+*  https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
+* learned about ports why 27015? gaming? -https://www.speedguide.net/port.php?port=27015
+*more ports? https://opensource.com/article/18/10/common-network-ports
+*first sent message (converted from bytes)
+
+store websites currently using:
+https://ncona.com/2019/04/building-a-simple-server-with-cpp/
+https://www.acronis.com/en-us/articles/telnet/
+https://www.geeksforgeeks.org/socket-programming-cc/
+https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
+https://www.bogotobogo.com/cplusplus/sockets_server_client.php
+https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-wsadata
+https://docs.microsoft.com/en-us/windows/win32/winsock/creating-a-socket-for-the-client
+https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
+https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-gethostname
+https://www.geeksforgeeks.org/c-program-display-hostname-ip-address/
+
+**make functions
+
+**first was only sending bytes of information
+    -fixed by setting the char buffer equal to the string
+
+@@@@@@@Chapter 2: getting/sending proper messages
+**fixed garbage outbut by using memset().After the NULL char ('\0') the rest of the buffer is filled with NULL characters.
+    I used memset before I sent data.
+
+**Now I want to srtreamline messages (welcome message, have server receive and send all incoming chat history to client
+-did this by rearranging the receiving() and sending() functions in botht he server and the client code
+
+**networking
+-installed AISO library
+
+@@@@Chapter 3: Proper listening/receiving cycles
+******integrate multithreading?
+learned about basics of it with https://luminousmen.com/post/asynchronous-programming-blocking-and-non-blocking
+-i need an asynchronous non-blocking i/o connection(s) ********************
+-http://what-when-how.com/Tutorial/topic-547t9a4dbp/An-Introduction-to-Network-Programming-with-Java-60.html
+```lots of info^^^
+
+**began integrating synchronous I/O with select()
+--the fd_set struct type held a member function of an array of sockets. I looped through this every time something was sent/received to determine who to send to or receive from
+
+--bugs:
+---with one client:(multiplle clients-one client stuck 5)(NORMAL) (6-with errorcheckinh)
+    I could connect, but could only send one message. this was because of (pic 6)
+    --there was only one connected client socket, so the connected socket (tempSock) was set to OUTPUTSOCK. this is because we dont want a client's message echoed back to itself.
+    I fixed this with a simple if(7).
+        now the client can talk to itself if it is the only one connected. otherwise, its message is sent to the other clients
+--with mutliple clients 
+    I experienced a problem where messages would not initially go through. to receive a message from a different client, you had to oscilate between them, sending messages from each. you would only be able to see a message send after the next client had sent a message (delays by one message. Further, you could only send one message at a time.) (8)
+        Figured out this is because the client that is supposed to receive the message always tries to send() before receive(). (9)
+-i will fix by incorporating threading and a timer on the cin. if timer goes off, it will try and receive?
+
+@@@@@@Chapter 4: A proper Conversation with Multithreading
+-after lost of reading and testing, I finally was able to incorportate multithreading. The thread checks for incomming messages by constantly attempting to receive messages from the server. I incorporated a sleep() on the thread to limit CPU usage. Now, clients can send as many messages as they like, while still receiveing messages from the server in real* time. (10) shows multiple clients chatting.
+-i then integrated an identifying system with some other minor tweaks (11)
+
+Chapter 5: Basic Security
+-now i want to incorporate SQL and ip tracking.
+--I have added a function  getpeername() which returns the ip of the connected (client) Socket. (12)
+
+-time to integrate MySQL to track current connections.
+        
+
+integrate mysql to record ip's and make banlist if too many connections.
+learning about the sql C api @ https://dev.mysql.com/doc/c-api/8.0/en/
+
+I have integrated an IP tracking aspect via a map where I can track the clients IP and the number of connections from that IP adress.
+--the std:: map is a container that allows storage for both a key(ip address in this case) and a key-value(the number of connections per IP in this case). I have implemented incrementing and decrementing on the server side to maintain the current connections. Further. I have applyed a threshold of maxumum clients per IP adress. If a client tries to join from a network that has alread reach the maximum capacity (from their specific IP), they are met with an informative message and the client closes automatically after some time. (13)
+
+This process took more time than I thought, and I had to decrypt and solve a good number of logic bugs. This included everything from correctly closing a socket/adding the (correct) client socket to the server, adding/erasing the IP objects from the map, and incrementing/decrement its numConnected integer.
+
+Chapter 6: Making The Application pretty
+
+*/
+html{
+    background: #a6e9e9;
+    background: radial-gradient(#5292bf,#1e272e);
+    height: auto%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+body{
+    background: #fafafa;
+    background-position:center;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 10);
+    color: #141413;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    margin-right: 25px;
+    margin-left: 25px;
+    height: auto; /*?????????????? */
+    overflow-x: hidden;
+}
+
+
+.topBar{
+    z-index: 999;
+    background-color: black;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    }
+.topBar h4{ /*(lukas jakstas)*/
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 16px;
+    letter-spacing:1.3px;
+    color: #FFF;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 8px;
+    position: relative;
+    top: 4px;
+}
+.toolbar{
+    background-color: lightblue;
+    border: 1px ridge black;
+    padding-top: 0.9%;
+
+    text-align: center;
+}
+.toolbar a{ /* Links and words*/
+    font-family: Didot, serif;
+    font-size: 24px;
+    padding: 0px 18px;
+    text-align: center;
+    float: center;
+
+}
+.topBar .toolbar a:link {
+    text-decoration: none;
+    color: #222;
+}
+.topBar .toolbar a:visited { /*add jva cookies to reset*/
+    text-decoration: none;
+    color: #222;   
+}
+.topBar .toolbar a:hover {
+    text-decoration: none;
+    color: #e32424;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropdown .dropdownBtn{
+    font-family: Didot, serif;
+    font-weight: 800;
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    margin-left: 5%;
+    margin-right: -20%;
+    margin-bottom: 15%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+}
+    /*.dropdown: hover*/
+.dropdownContent{
+    display: none;
+    position:absolute;
+    background-color: lightblue;
+    z-index: 1;
+    min-width: 150%;
+    border: 1px ridge black;
+    margin-left: 15%
+}
+.dropdownContent a{
+    float: none;
+    display: block;
+    font-family: Didot, serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: left;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+}
+.dropdown:hover .dropdownContent{
+    display: block;
+}
+.dropdownContent a:hover{
+    background-color: #f9f9a9;
+}
+
+.OverviewCTR{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-bottom: 3%;
+}
+.OverviewCTR h1{
+    font-family: Georgia, sans-serif;
+    font-size: 5em;
+    letter-spacing: -2px;
+}
+.OverviewCTR p{
+    text-indent: 3%;
+    margin-top: -4%;
+    margin-bottom: 1.5%;
+}
+.BlueCTR{
+    background-color: #0A1720;
+    float: left;
+}
+.BlueContent{
+    padding-top: 1.5%;
+    padding-bottom: 3%;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: white;
+}
+.BlueContent h2{
+    font-family: Georgia, sans-serif;
+    font-size: 2.5em;
+    letter-spacing: -0.4px;
+}
+.BlueContent p{
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    letter-spacing: -.2px;
+    font-size: 21px;
+}
+.BlueContent .list{
+    line-height: 140%;
+}
+.BlueContent .list a{
+    text-decoration: none;
+    color: #D5D9DD;
+}
+.BlueContent a{
+    text-decoration: none;
+    color: #A7B2BB;
+}
+.BlueContent a:hover{
+    color: #7B998C;
+    text-decoration: underline;
+}
+.imgCTR{
+    text-align: center;
+}
+.BlueContent img{
+    background-color: #708089;
+    padding-left: 0.25%;
+    padding-right: 0.25%;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+    border: solid #3A4C57;
+}
+iframe{
+    background-color: #3A4C57;
+    text-align: center;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    border: solid #1e272e;
+}
+
+.WhiteCTR{
+    background-color:white;
+    float:left;
+}
+.WhiteContent{
+    padding-top: 1.5%;
+    padding-bottom: 3%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.WhiteContent h2{
+    font-family: Georgia, sans-serif;
+    font-size: 2.5em;
+    letter-spacing: -0.4px;
+}
+.WhiteContent p{
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    letter-spacing: -.2px;
+    font-size: 21px;
+}
+.WhiteContent a{
+    text-decoration: none;
+    color: #050615;
+}
+.WhiteContent a:hover{
+    color: #47281C;
+    text-decoration: underline;
+}
+.WhiteContent img{
+    background-color: #3D5F4F;
+    padding-left: 0.25%;
+    padding-right: 0.25%;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+    border: solid #0A1720;
+}
+
+.FooterCTR  /* WRAPPER */
+{
+    background-color:#0A1720;
+    padding-top: 2%;
+    padding-bottom: 0.75%;
+    float: left;
+}
+.topFooter{
+    display: flex;
+    flex-direction: row;
+    margin-left: 12%;
+    margin-right: 12%;
+}
+.FooterCTR h6{
+    color:#C9CDD0;
+    font-size: 130%;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px;
+    margin-bottom: -1.5%;
+}
+.MoreInfoCTR{                  /* leftFooter */
+    flex: 1.5;
+}
+.MoreInfoCTR p{
+    margin-top: 3%;
+    color: #98A1A8;
+    margin-right: 5%;
+    line-height: 1.6;
+}
+.ContactCTR{
+    flex: 0.7;
+}
+ul {
+    padding: 0;
+    list-style-type: none;
+    line-height: 2;
+    
+}
+.Contact-links, .Contact-links a{
+    color: #98A1A8;
+    list-style-type: none;
+    text-decoration: none;
+}
+.Contact-links a:active, .Contact-links a:focus, .Contact-links a:hover
+{
+  color:#3D6D58;
+  text-decoration: none;
+}
+
+.QuickReferenceCTR{
+    flex: 0.7;
+}
+.Reference-links, .Reference-links a{
+    color: #98A1A8;
+    list-style-type: none;
+    text-decoration: none;
+}
+.Reference-links a:active,.Reference-links a:focus,.Reference-links a:hover
+{
+  color:#3D6D58;
+  text-decoration:none;
+}
+
+hr{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1.2%;
+    margin-bottom: 1.2%;
+    color: #98A1A8;
+}
+.CopyrightCTR
+{
+    text-align: center;
+}
+.CopyrightCTR p
+{
+    color: #98A1A8;
+}

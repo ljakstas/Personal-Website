@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Test.css">
+    <title>Document</title>
+</head>
+<body>
+    <header style="background-color: hotpink;">
+        <h1 class = "headh1">Lukas Jakstas</h1>
+
+        <nav style="background-color: green;">
+            <ul class = "headUL">
+            <li class="nav__links"><a class = "navA" href="#">Home</a></li>
+            <li class="nav__links"><a class = "navA" href="#">About Me</a></li>            
+            <li class="nav__links"><a class = "navA" href="#">Projects</a></li>
+            </ul>
+        </nav>
+        <a href="#" style= "margin-left: 1%;"><button class = "headButt">Contact</button></a>
+    </header>
+
+<script type="text/JavaScript">
+        window.addEventListener("scroll" ,function() {
+    let header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+});
+    </script>
+</body>
+</html>

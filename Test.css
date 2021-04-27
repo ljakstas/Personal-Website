@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    height: 5000px;
+    background: #182130;
+}
+
+/*li,a,button {*/
+.nav__links, .navA, .headButt{
+
+    font-weight: 500;
+    font-size: 19px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header {
+    position: sticky;
+    top:0;
+    background: #596781;
+    transition: 2s;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.headUL{
+    list-style: none;
+    position: relative;
+}
+
+.nav__links{
+    display: inline-block;
+    padding: 0px 20px;
+
+}
+
+.headUL, .nav__links, .navA {
+    transition: all .8s ease 0s;
+}
+
+.nav__links:hover, .navA:hover {
+    color: #a90600;
+    transition: 1.5s;
+}
+
+.headButt {
+    padding: 9px 25px;
+    background: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .8s ease 0s;
+}
+
+.headButt:hover {
+    background-color: #5c4e82;
+}
+
+.sticky {
+    background: #687b9c;
+    transition: 2s;
+}
+
+.sticky .headh1   { /*lleft h1 on scroll*/
+    color: #301826;
+    
+}
+
+.sticky .navA {
+/* nav-links color on scroll*/
+    color:#4f0deb
+}
+
+.sticky .navA:hover {
+    /* nav-links color on scroll-hover*/
+        color:#26e70d
+}
+

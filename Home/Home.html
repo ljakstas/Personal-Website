@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>
+            Home
+        </title>
+        <meta charset="utf-8">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+        <link rel="stylesheet" href="Home.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+      </head>
+<!--Building up, least-togreatest-->
+    <body onload = "typing_effect(['My name is Lukas:', 'I am a Problem Solver,', 'I am a Programmer,', 'I am a Developer.'],
+    ['#FFFFFF']);">
+        
+          
+       <!-- <div class = "topBar">
+            <h4>
+                Lukas Jakstas
+            </h4>     
+        </div> 
+            <div class = "toolbar">
+                
+                <a href = "#"><b>Home</b></a>
+                
+                 <a href = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrPuXCqipc_U6-Kpxiqm9b917yvOEIpAdjFw&usqp=CAU"><b>More About Me</b></a>
+                        
+                 <a href = "../Chat%20application/ChatApplication.html"><b>Chat Application</b></a>
+                
+                <a href = "https://i.ytimg.com/vi/7eAPuWyowjY/hqdefault.jpg"><b> "Project 2"</b></a>  
+            
+                <div class = "dropdown">
+                    <button class = "dropdownBtn"> More Ideas
+                        <i class = "fa fa-angle-down"></i>
+                    </button>
+                    <div class = "dropdownContent">
+                        <a href = "https://bbk12e1-cdn.myschoolcdn.com/ftpimages/940/news/zoom_news1007045_955780.jpg"><b>Pocket Travel Video</b></a>
+                        
+                        <a href = "https://media.vanityfair.com/photos/5c0d9391ea5c1607c3a6dd07/2:3/w_740,h_1110,c_limit/t-Ben-Shapiro.jpg"><b>Gas Station Finder</b></a> 
+                        
+                        <a href = "https://media.vanityfair.com/photos/5c0d9391ea5c1607c3a6dd07/2:3/w_740,h_1110,c_limit/t-Ben-Shapiro.jpg"><b>Instagram Bot</b></a> 
+                        <a href = "#"><b>Pending...</b></a>
+                        
+                    </div>
+                </div>
+                
+            </div> -->
+        
+    <script>
+        $(document).ready(function() {
+            $(".overlay").animate({'opacity': '0'}, 2000);
+            alert("done");
+        });
+    </script>
+    <header>
+        <h1 class = "headh1">Lukas Jakstas</h1>
+
+        <nav>
+            <ul class = "headUL">
+            <li class="nav__links"><a class = "navA" href="#">Home</a></li>
+            <li class="nav__links"><a class = "navA" href="../About Me/AboutMe.html">About Me</a></li>            
+            <li class="nav__links"><a class = "navA" href="#">Projects</a></li>
+            </ul>
+        </nav>
+        <a href="#" style= "margin-left: 1%;"><button class = "headButt">Contact</button></a>
+    </header>
+
+    <script type="text/JavaScript">
+        window.addEventListener("scroll" ,function() {
+        let header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+
+    <div class="PicContainer">
+        <div class = "overlay"> </div>
+        <img src="../Pics/temphome.jpg" style = "width: 90%;height: 90%; overflow-x: hidden;">
+        <div class='console-container'>
+            <span id='text'></span>
+            <div class='console-underscore' id='cursor'>|</div>
+        </div>
+    </div>
+    <script>
+        function typing_effect(words, colors) 
+        {
+
+            var cursor = document.getElementById('cursor'); //cursor
+            var text = document.getElementById('text') //text
+
+            var blink = true;
+            var wait = false;
+            var letters_count = 1;
+            var temp = 1;
+
+            text.style.color = colors[0]
+            window.setInterval(function () //wait between words when it starts writting
+            { 
+                if (letters_count === 0 && wait === false) 
+                {
+                    wait = true;
+
+                    text.innerHTML = '' // leave a blank
+                    window.setTimeout(function () 
+                    {//remove first element and get it as str
+                        var usedColor = colors.splice(0, 1)[0] 
+                        colors.push(usedColor);
+                        var usedWord = words.splice(0, 1)[0]
+                        words.push(usedWord);
+                        temp = 1;
+                        text.style.color = colors[0]
+                        letters_count += temp;
+                        wait = false;
+                    }, 
+                    80)
+                } 
+                else if (letters_count === words[0].length + 1 && wait === false) 
+                {
+                    wait = true;
+                    window.setTimeout(function () //wait a bit until words finished and start deleting
+                    { 
+                        temp = -1;
+                        letters_count += temp;
+                        wait = false;
+                    }, 
+                    400)
+                }
+                else if (wait === false) //write words 
+                {                    
+                    text.innerHTML = words[0].substr(0, letters_count)
+                    letters_count += temp;
+                }
+            }, 
+            100)
+            window.setInterval(function () //simulate blink
+            {
+                if (blink) 
+                {
+                    cursor.style.opacity = "0";
+                    blink = false;
+                } 
+                else 
+                {
+                    cursor.style.opacity = "1";
+                    blink = true;
+                }
+            }, 
+            350)
+        } 
+    </script>               
+
+        <div class = "secWrap">
+        <div class = "sec1">
+            <h2 class = "pHeading">
+                Hello, and Welcome!
+            </h2>
+            <table class = AboutTable>
+                <tbody class = "AboutTbody">
+                    <tr class = "AboutTr"> 
+                        <td class = "AboutP" id = "tableElement">
+                        <p>
+                            I appreciate you stopping by! My name is Lukas Jakstas, and I am a second year student attending University of Tennessee-Knoxville and pursuing a bachelor's in Computer Science and a minor in Cybersecurity. My hobbies include programming, playing instruments,hiking, and exercising. Within this website, you can learn more <a href = "#">About Me</a> and the personal projects I have completed. 
+                        </p>
+                        <p>  
+                            Within this website, you can learn more <a href = "#">About Me</a> and the personal projects I have completed. 
+                        </p>
+                        <p>
+                        Lorem ipsum dolor sit amet, sed minim maiorum accumsan ne, sea principes vituperata voluptatibus te, nam ea idque tantas utinam. An sed voluptua similique forensibus, an sit numquam electram. Dolorem atomorum oportere at est, eum sale accommodare ut. Sit oportere complectitur ea. Sit quando deserunt ei, verterem atomorum aliquando te ius, eum et nobis ceteros probatus.
+                        </p>
+                        </td>
+                        <br>
+                    <td class = BrackTD id = "tableElement" >
+                        <div class = "BrackContainer">
+                            <img src= "../Pics/BracketsIcon.png" alt="" style= "width: 30%" style= "height: 45%" class= "over"/> 
+                            <img src= "../Pics/BracketsCode.png" alt="" style= "width: 65%" style= "height: 70%" class= "under"/> 
+                            <br>
+                        <img src = "../Pics/VSCicon.png" style = "width: 40%; height: 40%;" class = "vsc">
+                        </div>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>    
+            <hr>
+<script>   
+    
+    $(window).scroll(function() {
+    var hT = $(".scroll-to").offset().top,
+        hH = $(".scroll-to").outerHeight(),
+        wH = $(window).height(),
+        wS = $(this).scrollTop();
+    console.log((hT-wH) , wS, hH);
+    /*alert("hT: " + hT+" hH: "+hH+" wH: "+wH+" wS: "+wS+ "\n"+"wS: "+wS+" n: "+(hT+hH-wH+300));*/
+    
+    if (wS > (hT+hH-wH + 300) && (hT+hH-wH) > -10)
+    {
+        //alert("done");
+       /* $('#scroll-to').animate({"background-color": "blue"}, 800);*/
+        //$('#ii').css("visibility", "visible");
+        //alert("visible");
+        //$('#ii').fadeIn(5000).removeAttr('ii');
+        
+        if( $(".scroll-to").css('opacity') == '0')
+        {
+           // alert("before");
+            $(".scroll-to").animate({'opacity': '1'},800); 
+        }
+        //$(".scroll-to").fadeIn("slow");
+        //alert("faded");
+    }   
+    });
+    
+    /*$(window).scroll(function() {
+    var hT = $('#to').offset().top,
+        hH = $('#to').outerHeight(),
+        wH = $(window).height(),
+        wS = $(this).scrollTop();
+    console.log((hT-wH) , wS);
+    //alert("hT: " + hT+" hH: "+hH+" wH: "+wH+" wS: "+wS+ "\n"+"wS: "+wS+" n: "+(hT+hH-wH));
+    if (wS > (hT+hH-wH) + 15 && (hT+hH-wH) > 0)
+    {
+    //alert("y");
+    //alert("hT: " + hT+" hH: "+hH+" wH: "+wH+" wS: "+wS+ "\n"+"wS: "+wS+" n: "+(hT+hH-wH));
+    $('#to').fadeIn(3500);
+    }
+    
+    });
+    $(window).scroll(function() {
+    var hT = $('#tot').offset().top,
+        hH = $('#tot').outerHeight(),
+        wH = $(window).height(),
+        wS = $(this).scrollTop();
+    console.log((hT-wH) , wS);
+    //alert("hT: " + hT+" hH: "+hH+" wH: "+wH+" wS: "+wS+ "\n"+"wS: "+wS+" n: "+(hT+hH-wH));
+    if (wS > (hT+hH-wH) && (hT+hH-wH) > -5)
+    {
+    //alert("y");
+    //alert("hT: " + hT+" hH: "+hH+" wH: "+wH+" wS: "+wS+ "\n"+"wS: "+wS+" n: "+(hT+hH-wH));
+    $('#tot').fadeIn(5000);
+    
+    }
+    
+    });*/
+</script>
+            <div class = "ToolContainer">
+                <div class =  "scroll-to">  
+                <h2 class = "pHeading" style = "margin-top: 1.5%;">
+                    Some of My Tools
+                </h2>
+            </div>
+                <table class="ToolsetTable">
+                    <tr class = "RowTr">
+                        <td class="grid-item">
+                            <a href = https://www.cplusplus.com>
+                            <div class = "tableImg">
+                                <img src= "../Pics/CplusplusIcon.png"/>
+                            </div>
+                            </a>
+                                
+                        <a href = https://www.cplusplus.com id = "title">
+                        C++</a>
+                        <p>Being the main language I learned so far throughout university, I have the most experience in C++. Further, I coded my <a href = "/Chat application/ChatApplication.html">TCP Messenger Application</a> with it.</p>
+                        </td>
+
+                        <td class="grid-item">
+                            <a href = https://docs.microsoft.com/en-us/dotnet/ id = "title">
+                        <div class = "tableImg">
+                            <img src= "../Pics/NETicon.png" /> 
+                        </div>
+                                </a>
+                        <a href = https://docs.microsoft.com/en-us/dotnet/ id = "title">
+                            .Net Framework</a>
+                        <p>When transitioning my <a href = "/Chat application/ChatApplication.html">TCP Messenger Application</a> from standard console to a GUI using Visual Studio, I used a .NET Framework for my code.</p>
+                        </td>
+
+                        <td class="grid-item">
+                            <a href = https://mobaxterm.mobatek.net>
+                        <div class = "tableImg">
+                             <img src= "../Pics/UNIXicon.png" >
+                       </div>
+                            </a>
+                        <a href = https://mobaxterm.mobatek.net id = "title">
+                        UNIX</a>
+                        <p>The University of Tennessee-Knoxville uses MobaXterm as both and SSH client and a UNIX IDE, giving me experience in Linux environments.</p>
+                        </td>  
+                    </tr>
+
+                    <tr class = "RowTr">
+                    <td class="grid-item">
+                        <a href = https://www.w3schools.com/>
+                    <div class = "tableImg">
+                    <img src= "../Pics/Webicon.png" style= "padding-top: 3%;"/>
+                     </div>      
+                    </a>
+                    <a href = https://www.w3schools.com/ id = "title">
+                    WebDev</a>
+                    <p>After self-learning basic HTML, CSS, and JavaScript, I gained to desire to pursue more. Eager to learn new things, I have challenged myself to learn front-end programming to develop a website.</p>
+                    </td>
+
+                    <td class="grid-item">
+                        <a href = https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2>
+                    <div class = "tableImg">
+                        <img src= "../Pics/SocketIcon.png" />
+                    </div>
+                        </a>
+                    <a href = https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2 id = "title">
+                        Windows Sockets </a>
+                    <p>This library allowed me to create TCP connections between netwoks, enabling instant communication. Microsoft Sockets were the backbone of my <a href = "/Chat application/ChatApplication.html">TCP Messenger Application</a>.</p> 
+                    </td>
+
+                    <td class="grid-item">
+                        <a href = https://github.com/ljakstas>
+                        <div class = "tableImg">
+                            <img src= "../Pics/GitIcon.png" />
+                        </div>
+                            </a>
+                    <a href = https://github.com/ljakstas id = "title">
+                    Git</a>
+                    <p>In order to archive my projects and gain experience with industry environments, I use Github and upload my projects via Git.</p>
+                    </td>  
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <h2 class = "pHeading">
+                Project Intros
+            </h2>
+            <table class = AboutTable style="margin-top: -4%;">
+                <tbody class = "AboutTbody">
+                    <tr class = "AboutTr"> 
+                        <td class = "AboutP" id = "tableElement" >
+                            <h3 class = "projTitle">Website</h3>
+                        <p>
+                            Along with my first project, I had the desire to not only track my progress, but to widen my computer science skill-set into front-end. This is where the idea for a website came into play. Currenntly, I am  utilizing HTML, CSS, and JS. I hope to not only imporove my graphic design skills, but to also simplify and explain my projects more. That way it is easier to follow. I began this website's development using <a href = "http://brackets.io/">Brackets</a> but later transitioned to <a href = "https://code.visualstudio.com/">Visual Studio Code</a>.
+                        </p>
+                        </td>
+                        
+                        <br>
+                    <td class = BrackTD id = "tableElement">
+                        <div class = "BrackContainer">
+                            <img src= "../Pics/BracketsIcon.png" alt="" style= "width: 26%" style= "height: 45%" class= "over"/> 
+                            <img src= "../Pics/BracketsCode.png" alt="" style= "width: 55%" style= "height: 60%" class= "under"/> 
+                            <br>
+                        <img src = "../Pics/VSCicon.png" style = "width: 40%; height: 40%;" class = "vsc">
+                        </div>
+                    </td>
+                    </tr>
+                    <tr class = "AboutTr"> 
+                        <td class = "AboutP" id = "tableElement">
+                            <h3 class = "projTitle">Chat Application</h3>
+                            <p>
+                                The idea for my <a href = "../Chat application/ChatApplication.html"><b>Chat Application</b></a> project spawned quite randomly. While browsing a website , I was greeted with a chat display and a message stating, "Is there anything I can help you with?" It is a little early for me to endevor into an AI chat<i>bot</i>, however, the idea of a chat<i>box</i> seemed reasonable. My sights were set. As my first project, this took a bit longer than expected, but I beleive this is due to the process of installing and organizing the correct software (Visual Studio Code, Visual Studio, MinGW, mySQL, etc.) I began this project in October of 2020 and finished* that same year in December.
+                        </p>
+                        </td>
+                        
+                        <br>
+                    <td class = BrackTD id = "tableElement" >
+                        <div class = "BrackContainer">
+                            <img src= "../Pics/chatIcon.png" alt="" style= "width: 55%; height: 65%; left: 5%;" class= "over"/> 
+                        </div>
+                    </td>
+                    </tr>
+                </tbody>
+            </table> 
+
+        
+        </div>
+        </div>
+        <div class="FooterCTR">
+            <div class = "topFooter">
+                <div class="MoreInfoCTR">
+                <h6>More Info</h6>
+                <p>This website was created by Lukas Jakstas for personal and presentational purposes. Common for any coding task, I have read upon and used/based some parts of my code around others' code. If you have any questions, inquiries, or statements to provide, please use the following links to answer them.
+                </p>
+                </div>
+            
+                <div class="ContactCTR">
+                <h6>Contact Me</h6>
+                <ul class="Contact-links" id = "footul">
+                    <li><a href="">Email: Lukasjakstas@yahoo.com</a></li>
+                    <li><a href="https://github.com/ljakstas">Github/ljakstas</a></li>
+                    <li><a href="https://www.linkedin.com/in/lukas-jakstas-2a3739157/">LinkedIn</a></li>
+                </ul>
+                </div>
+
+                <div class="QuickReferenceCTR">
+                <h6>Quick References</h6>
+                <ul class="Reference-links" id = "footul">
+                    <li><a href="../WebsiteResume.pdf">Resume</a></li>
+                    <li><a href="https://github.com/">Github</a></li>
+                    <li><a href="https://www.utk.edu/">UTK</a></li>
+                </ul>
+                </div>
+            </div>
+            <hr>
+                <div class="CopyrightCTR">
+                <p>"Copyright" &copy; 2020 All Rights Reserved by Lukas Jakstas.
+                </p>
+                </div>
+            </div> 
+            
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+    
+    
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Chat Application Page
+        </title>
+        <link rel="stylesheet" href="ChatApplication.css">
+        <script>
+            typing_effect(['Hello World', 'My name is Harry', 'I am a programmer', 'This is a JS+CSS example'],
+            ['#FFFFFF', 'orange', 'blue', 'yellow']);
+
+      function typing_effect(words, colors) {
+
+      var cursor = document.getElementById('cursor'); //cursor
+      var text = document.getElementById('text') //text
+
+      var blink = true;
+      var wait = false;
+      var letters_count = 1;
+      var temp = 1;
+
+      text.style.color = colors[0]
+      window.setInterval(function () { //wait between words when it starts writting
+        if (letters_count === 0 && wait === false) {
+          wait = true;
+
+          text.innerHTML = '' // leave a blank
+          window.setTimeout(function () {
+            var usedColor = colors.splice(0, 1)[0] //remove first element and get it as str
+            colors.push(usedColor);
+            var usedWord = words.splice(0, 1)[0]
+            words.push(usedWord);
+            temp = 1;
+            text.style.color = colors[0]
+            letters_count += temp;
+            wait = false;
+          }, 1000)
+        } else if (letters_count === words[0].length + 1 && wait === false) {
+          wait = true;
+          window.setTimeout(function () { //wait a bit until words finished and start deleting
+            temp = -1;
+            letters_count += temp;
+            wait = false;
+          }, 1000)
+        } else if (wait === false) { //write words                    
+          text.innerHTML = words[0].substr(0, letters_count)
+          letters_count += temp;
+        }
+      }, 120)
+      window.setInterval(function () {
+        if (blink) {
+          cursor.style.opacity = "0";
+          blink = false;
+        } else {
+          cursor.style.opacity = "1";
+          blink = true;
+        }
+      }, 400)
+    }
+        </script>
+    </head>
+    <body>
+        
+        <div class = "topBar">
+            <h4>
+                Lukas Jakstas
+            </h4>      
+            <div class = "toolbar">
+                
+                <a href = "../Home/Home.html"><b>Home</b></a>
+                
+                 <a href = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrPuXCqipc_U6-Kpxiqm9b917yvOEIpAdjFw&usqp=CAU"><b>More About Me</b></a>
+                        
+                 <a href = "#"><b>Chat Application</b></a>
+                
+                <a href = "https://i.ytimg.com/vi/7eAPuWyowjY/hqdefault.jpg"><b> "Project 2"</b></a>  
+            
+                <div class = "dropdown">
+                    <button class = "dropdownBtn"> More Ideas
+                        <i class = "fa fa-angle-down"></i>
+                    </button>
+                    <div class = "dropdownContent">
+                        <a href = "https://bbk12e1-cdn.myschoolcdn.com/ftpimages/940/news/zoom_news1007045_955780.jpg"><b>Pocket Travel Video</b></a>
+                        
+                        <a href = "https://media.vanityfair.com/photos/5c0d9391ea5c1607c3a6dd07/2:3/w_740,h_1110,c_limit/t-Ben-Shapiro.jpg"><b>Gas Station Finder</b></a> 
+                        
+                        <a href = "https://media.vanityfair.com/photos/5c0d9391ea5c1607c3a6dd07/2:3/w_740,h_1110,c_limit/t-Ben-Shapiro.jpg"><b>Instagram Bot</b></a> 
+                        <a href = "#"><b>Pending...</b></a>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class = "OverviewCTR">
+            <h1>My Chat Application Journey</h1>
+                <p>Visual Studio 2019, C++, .NET, Visual C++</p>
+            <img class = "ShowImage" src = "../Pics/ChatPics/CurrentChat%2014.PNG" style = "width:60%; height: 3%;">
+            <img src = "../Pics/ChatPics/CurrentGif%2014.gif" style = "width:30%; height: 45%;">
+        </div>
+        
+        <div class = "BlueCTR">
+                <div class = "BlueContent">
+                <h2>Chapter 1: Getting Started</h2>
+                <p> With my eyes set upon a project, I began with plain-old research. I had no expirience with networking, so lots of reading and learning had to be done! Once I became familiar with the idea of sockets, I needed to choose a library to use for my project (that also was compatable with CPP). This is when I came across <a href = "https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2">Winsock</a>. "Winsock enables programmers to create advanced Internet, intranet, and other network-capable applications to transmit application data across the wire, independent of the network protocol being used."
+                </p>
+
+                <p>I followed the winsock <a href = "https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock">tutorial</a> on how to set up a basic synchronous echo server. Along with the Winsock library, I used the following websites to also help me understand sockets and other concepts.
+                </p>
+                    <ul class = "list">
+                        <li><a href = "https://ncona.com/2019/04/building-a-simple-server-with-cpp/">Ncona</a></li>
+                        <li><a href = "https://www.geeksforgeeks.org/socket-programming-cc/">GeeksforGeeks</a></li>
+                        <li><a href = "https://www.bogotobogo.com/cplusplus/sockets_server_client.php">BogoToBogo</a></li>
+                    </ul>
+                <p>After following the Winsock guide, I had come up with a simple server for one client. The message echoed was hard-coded into the client. However, the message echoed back did not come as expected; I had only received (echoed) the number of bytes back, rather than the message "This is a testppppp." I was glad information was able to be send and echoed, but there was still lots of work to be done.
+                </p>
+                <div class = "imgCTR">
+                <img src= "../Pics/ChatPics/Message%20Decoded.PNG" style = "width:55%; height: 35%;">
+                    </div>
+            </div>
+</div><!--End of Ch.1-->
+
+        <div class = "WhiteCTR">
+            <div class = "WhiteContent">
+                <h2>Chapter 2: Recieving and Sending Proper Messages</h2>
+                <p>After reviewing the code and adding some simple changes (which resulted in the bytes being decoded), I received the desired message...almost. There was (what semed to be) ASCII garbage following the message echoed.
+                </p>
+                <div class = "imgCTR">
+                <img src= "../Pics/ChatPics/Message%20Garbage2.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>After doing extensive research on the nature of <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-send">sending</a> and <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv">receiving</a> using Winsock, I learned that the empty characters in the message (buffer) are filled with random ASCII characters. Think of it as an Amazon box with an item, and the empty space in the box is filled with bubblewrap. I fixed this issue using the function <a href = "https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/memset-wmemset?view=msvc-160">memset()</a>. This function replaces all the characters after (the null terminating character) '/0' with NULL characters.
+                </p>
+                <div class = "imgCTR">
+                <img src= "../Pics/ChatPics/No%20Garbage%203.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>I then added some foundation such as a welcome message, and partial user interface where the user can type the message to send (rather than hardcoded).
+                </p>
+                <div class = "imgCTR">
+                <img src= "../Pics/ChatPics/Streamline%20Server%20sending%204.PNG" style = "width:55%; height: 35%;">
+                </div>
+            </div>
+        </div><!--End of Ch.2-->
+
+        <div class = "BlueCTR">
+            <div class = "BlueContent">
+                <h2>Chapter 3: Introducing a Cycle</h2>
+                <p>I learned more about chat applications and networking through <a href = "https://luminousmen.com/post/asynchronous-programming-blocking-and-non-blocking">LuminousMen.com</a> and <a href = "http://what-when-how.com/Tutorial/topic-547t9a4dbp/An-Introduction-to-Network-Programming-with-Java-60.html">What-When-How.com</a>. I learned about the differences between synchronous and asynchronous networking (I/O). My current chat application was synchronous, as in specific queues (sending/receiving) determined the cycles of input and output. That being said, you cannot have a client send a message while it is trying to receive one*. However, with neat <a href = "https://www.youtube.com/watch?v=dquxuXeZXgo">tricks</a>, you can get around this.
+                </p>
+                <p>Using Sloan Kelly's video as a basis and new starting point for my server code, I began integrating integrating synchronous I/O with <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-select">select()</a>.
+                </p>
+                <div class = "imgCTR">
+                    <iframe width="800" height="400"
+                        src = "https://www.youtube.com/embed/dquxuXeZXgo">
+                    </iframe>
+                </div>
+                <p>Initially with one client, the server would (after the welcome message) wait to receive, then send the echo back to the client, which becomes a problem with multiple clients, as mentioned in the paragraph above. However, Mr. Kelly utliizes loops with select() along with the <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-fd_set">struct fd_set{}</a> type. This data type holds member function of an array of sockets (fd_array[]). We then loop through this everytime a message was recieved (to the server) to determine who (clients) to forward the message to (<b>when we have multiple clients, we don't want to send client's message back to himself</b>).
+                </p>
+                <p>
+                  This specific video was a tremendous help with not only me grasping the specifics of networking and sockets between a server and client, but also with a basis for my code. I referenced a portion of my server code from this video. This allowed me to build upon it and later integrate multithreading.
+                </p>
+                <p>Once I implemented this new server code, bugs of course arose. The first I encounted was when one client was connected. I was only able to send one message.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Multiple%20Clients-1client%20stuck%205.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>As referenced above (in bold) we do not want to send a client's message back to itself. To do this, we look at the different sockets in play. We loop the socket array (from the fd_array[]) and if the socket is not the server(listening) socket or the client socket, we send the message to that socket (for it is a different client).</p>
+                <div class = "imgCTR">
+                 <img src = "../Pics/ChatPics/Multiple%20Clients-1client%20stuck%20CODE%206.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p style="text-align: center;">Became
+                </p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/client%20stuck%20CODE-fix%207.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>Now the client will talk to itself(nothing echoed) if it is the only one connected. otherwise, its message is sent to the other clients.</p>
+            </div>
+</div><!--End of Ch.3-->
+
+        <div class = "WhiteCTR">
+            <div class = "WhiteContent">
+                <h2>Chapter 4: Proper Conversations via Multithreading</h2>
+                <p>Another major bug I had experienced at this stage dealt with mutliple clients. I experienced a problem where messages would not initially go through once sent from a client. To receive a message from a client, a different client had to first send a message. (You would only be able to see a pervious message send after the next client had sent a message.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Client%20Delayed%20message%208.PNG" style = "width:70%; height: 40%;">
+                </div>
+                <p>I soon figured out that this is because each client that is supposed to receive the message has their loop attempting to <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-send">send</a> a message before <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-recv">receiving</a> one. This again partially alludes to the synchrounous behavior of the server/client.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Client%20sending%20before%20receiving%209.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>After lots of reading a came across a possible solution: multithreading. However, my runtime compiler, MinGW, does not support threads. After lots of searching, I came across a Github user <a href = https://github.com/meganz/mingw-std-threads>Meganz</a>. He/she had developed custom libraries to import so that threading would compile using MinGW.</p>
+                <p>Now that I had the tools at my disposal, I needed to do lots of testing and learning for I had no expirience with threading at the time. I used a simple program found on <a href = "https://stackoverflow.com/questions/28944972/how-to-use-a-timer-in-c-to-force-input-within-a-given-time">StackOverflow</a> as a starting point. I fidgited around with this and slowly transformed the code and integrated it into my client code. One interesting part of threading I came across was the fact of special parameters with the function I used, <a href = "https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/beginthread-beginthreadex?view=msvc-160">_beginthreadx()</a></p>
+                <p>After much of reading and testing, I finally was able to incorporate multi-threading. The thread checks for incoming messages by constantly attempting to receive messages from the server. I incorporated a sleep() on the receiving thread to limit CPU usage. Now, clients can send as many messages as they like, while still receiving messages from the server in real* time.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/plain%20group%2010.PNG" style = "width:90%; height: 45%;">
+                <p style="text-align: center;">After minor tweaking and an identifying system, we have:
+                </p>
+                </div>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Identification%2011.PNG" style = "width:95%; height: 45%;">
+                </div>
+         </div>   
+</div><!--End of Ch.4-->
+
+        <div class = "BlueCTR">
+            <div class = "BlueContent">
+            <h2>Chapter 5: Basic Security</h2>
+                <p>The next step I wanted to embark upon was security. I wanted to track and maintain user's connections and store them in a database. I needed to store a key(ip address in this case) <i>as well as</i> a key-value(the number of connections per IP in this case). The <a href = "http://www.cplusplus.com/reference/map/map/">std::map</a> was perfect for this for "Maps are associative containers that store elements formed by a combination of a <i>key</i> value and a <i>mapped value</i>, following a specific order."
+                </p>
+                <p>I utilized the function <a href = "https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-getpeername"> getpeername()</a> to extracted the IP from a client's socket.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/ipServer%2012.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>I then implemented incrementing and decrementing on the server side to maintain the total number of connections. Further. I  applied a threshold of maximum clients per IP address to prevent fork-bombing/overloading. If a client tries to join from a network that has already reach the maximum capacity (from their specific IP), they are met with an informative message, and the client closes automatically after some time.</p>
+                <div class = "imgCTR">
+                 <img src = "../Pics/ChatPics/Overloaded%20Client%20-%2013.PNG" style = "width:55%; height: 35%;">
+                </div>
+                <p>This process took more time than I thought, and I had to decrypt and solve a good number of logic bugs. This included everything from correctly closing a socket/adding the (correct) client socket to the server, adding/erasing the IP objects from the map, and incrementing/decrement its numConnected integer. The "final" product so far looks like:
+                </p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/CurrentGif%2014.gif" style = "width:55%; height: 35%;">
+            </div>
+            </div>
+</div><!--End of Ch.5-->
+
+        <div class = "WhiteCTR" style="min-width: 100%;">
+            <div class = "WhiteContent">
+                <h2>Chapter 6: Making It Pretty</h2>
+                <p>For the graphical user interface, I used Visual studio's UI templates. I started out with a CLR Empty Project based off of <a href = "https://stackify.com/net-core-vs-net-framework/">.NET Framework</a>.</p>
+                
+                <p>I started out with a blank window (15).</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Graphics%2015.PNG" style = "width:70%; height: 40%;">
+                </div>
+                <p>Began learning more and more CLR Framework and window forms. I soon acheived a basic graphical interface that I could structure future edits around. However, I still needed to actually integrate my code into this GUI. (16).</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Basic%20UI%2016.PNG" style = "width:70%; height: 40%;">
+                </div>
+                <p>I have attatched .exe files to the button events. However, I will be integrating my code into the Window form, not running the .exe. It may be usfull in future projects though.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/Integrated%20exe%2017.gif" style = "width:70%; height: 40%;">
+                </div>
+                <p>After becoming  more accustom to the Visual C++ toolbox properties, I  implemented the basic chat effects where a user submits characters through a textbox. After "sending" the message, the textbox clears in order for the user to send a new message.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/WorkingTexbox%2018.gif" style = "width:70%; height: 40%;">
+                </div>
+                <p>Now that I had a basic structure to work around, I began transfering my code in this new, .NET environment. However, after minor confusion and a pleathora of errors, I came across the fact that .NET does not support traditional threading, for the CLR framework had its own integration of threads. This required me to alter specifics of my original code: 
+                <a ref = "https://docs.microsoft.com/en-us/cpp/standard-library/condition-variable?view=msvc-160">std::condition_variable</a>. Further, CLI had its own "System::" variables such as string and std::map. I altered my mapping in reference to < a href = "             https://docs.microsoft.com/en-us/cpp/dotnet/map-stl-clr?view=msvc-160"> System::String</a></p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/ConditionVarBlocked%2019.PNG" style = "width:70%; height: 40%;">
+                </div>
+                <p>I needed to integrate a new type of threading: one that is compatible with C++/CLI applications. I learned more about threading in CLI applications on <a href = "https://www.codeproject.com/Articles/12740/Threads-with-Windows-Forms-Controls-in-Managed-C">Codeproject's</a> website.
+                </p>
+                <p>After much research, I decided to use C++/CLI's <h ref = "https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.backgroundworker?view=net-5.0">BackgroundWorker Class</h>. This allows for operation executions on  separate threads. After implementing and testing the backgroundworker class into my code, I was able to succesfully communicate (I/O) from my Client Window with another (consol) client through a (consol) server.
+                </p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/thread1%2020.gif" style = "width:70%; height: 40%;">
+                </div>
+                <p>After acheiving a sound baseline with my client window, I moved on to the server window. I displayed usefull data to the server regarding booting updates, connections, messages, and IP updates.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/ServerNotes%2021.PNG" style = "width:70%; height: 40%;">
+                </div>
+                <p>I then added proper transfer from server to other clients, allowing for communication between clients. Also, other clients are notified when one leaves the chat room.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/ClientChat%2022.PNG" style = "width:70%; height: 40%;">
+                </div>
+                <p>With the application finally coming together, I integrated samller details such as a title page, error windows, username personalization and more pleasant graphics. Below demonstrates how one may host a server.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/HostServer%2023.gif" style = "width:70%; height: 40%;">
+                </div>
+                <p style="text-align: center;"> And how one may join a server.</p>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/JoinServer%2024.gif" style = "width:70%; height: 40%;">
+                </div>
+                <br><br>
+                <div class = "imgCTR">
+                <img src = "../Pics/ChatPics/JoinServer%202%2025.gif" style = "width:70%; height: 40%;">
+                </div>
+                
+            </div>
+        </div><!--End of Ch.6-->
+               
+         <div class="FooterCTR">
+                <div class = "topFooter">
+                  <div class="MoreInfoCTR">
+                    <h6>More Info</h6>
+                    <p>This website was created by Lukas Jakstas for personal and presentational purposes. Common for any coding task, I have read upon and used/based some parts of my code around others' code. If you have any questions, inquiries, or statements to provide, please use the following links to answer them.
+                    </p>
+                  </div>
+                
+                  <div class="ContactCTR">
+                    <h6>Contact Me</h6>
+                    <ul class="Contact-links">
+                      <li><a href="">Email: Lukasjakstas@yahoo.com</a></li>
+                      <li><a href="https://github.com/ljakstas">Github/ljakstas</a></li>
+                      <li><a href="https://www.linkedin.com/in/lukas-jakstas-2a3739157/">LinkedIn</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="QuickReferenceCTR">
+                    <h6>Quick References</h6>
+                    <ul class="Reference-links">
+                      <li><a href="WebsiteResume.pdf">Resume</a></li>
+                      <li><a href="https://github.com/">Github</a></li>
+                      <li><a href="https://www.utk.edu/">UTK</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+                  <div class="CopyrightCTR">
+                    <p>"Copyright" &copy; 2020 All Rights Reserved by Lukas Jakstas.
+                    </p>
+                  </div>
+                </div>     
+    </body>
+</html>
+<!--@@@@@Chapter one: getting started
+*started with plane research, went on geeks, installed VS 2019, getting started with Winsock
+*  https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
+* learned about ports why 27015? gaming? -https://www.speedguide.net/port.php?port=27015
+*more ports? https://opensource.com/article/18/10/common-network-ports
+*first sent message (converted from bytes)
+
+store websites currently using:
+https://ncona.com/2019/04/building-a-simple-server-with-cpp/
+https://www.acronis.com/en-us/articles/telnet/
+https://www.geeksforgeeks.org/socket-programming-cc/
+https://docs.microsoft.com/en-us/windows/win32/winsock/getting-started-with-winsock
+https://www.bogotobogo.com/cplusplus/sockets_server_client.php
+https://docs.microsoft.com/en-us/windows/win32/api/winsock/ns-winsock-wsadata
+https://docs.microsoft.com/en-us/windows/win32/winsock/creating-a-socket-for-the-client
+https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
+https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-gethostname
+https://www.geeksforgeeks.org/c-program-display-hostname-ip-address/
+
+**make functions
+
+**first was only sending bytes of information
+    -fixed by setting the char buffer equal to the string
+
+@@@@@@@Chapter 2: getting/sending proper messages
+**fixed garbage outbut by using memset().After the NULL char ('\0') the rest of the buffer is filled with NULL characters.
+    I used memset before I sent data.
+
+**Now I want to srtreamline messages (welcome message, have server receive and send all incoming chat history to client
+-did this by rearranging the receiving() and sending() functions in botht he server and the client code
+
+**networking
+-installed AISO library
+
+@@@@Chapter 3: Proper listening/receiving cycles
+******integrate multithreading?
+learned about basics of it with https://luminousmen.com/post/asynchronous-programming-blocking-and-non-blocking
+-i need an asynchronous non-blocking i/o connection(s) ********************
+-http://what-when-how.com/Tutorial/topic-547t9a4dbp/An-Introduction-to-Network-Programming-with-Java-60.html
+```lots of info^^^
+
+**began integrating synchronous I/O with select()
+--the fd_set struct type held a member function of an array of sockets. I looped through this every time something was sent/received to determine who to send to or receive from
+
+--bugs:
+---with one client:(multiplle clients-one client stuck 5)(NORMAL) (6-with errorcheckinh)
+    I could connect, but could only send one message. this was because of (pic 6)
+    --there was only one connected client socket, so the connected socket (tempSock) was set to OUTPUTSOCK. this is because we dont want a client's message echoed back to itself.
+    I fixed this with a simple if(7).
+        now the client can talk to itself if it is the only one connected. otherwise, its message is sent to the other clients
+--with mutliple clients 
+    I experienced a problem where messages would not initially go through. to receive a message from a different client, you had to oscilate between them, sending messages from each. you would only be able to see a message send after the next client had sent a message (delays by one message. Further, you could only send one message at a time.) (8)
+        Figured out this is because the client that is supposed to receive the message always tries to send() before receive(). (9)
+-i will fix by incorporating threading and a timer on the cin. if timer goes off, it will try and receive?
+
+@@@@@@Chapter 4: A proper Conversation with Multithreading
+-after lost of reading and testing, I finally was able to incorportate multithreading. The thread checks for incomming messages by constantly attempting to receive messages from the server. I incorporated a sleep() on the thread to limit CPU usage. Now, clients can send as many messages as they like, while still receiveing messages from the server in real* time. (10) shows multiple clients chatting.
+-i then integrated an identifying system with some other minor tweaks (11)
+
+Chapter 5: Basic Security
+-now i want to incorporate SQL and ip tracking.
+--I have added a function  getpeername() which returns the ip of the connected (client) Socket. (12)
+
+-time to integrate MySQL to track current connections.
+        
+
+integrate mysql to record ip's and make banlist if too many connections.
+learning about the sql C api @ https://dev.mysql.com/doc/c-api/8.0/en/
+
+I have integrated an IP tracking aspect via a map where I can track the clients IP and the number of connections from that IP adress.
+--the std:: map is a container that allows storage for both a key(ip address in this case) and a key-value(the number of connections per IP in this case). I have implemented incrementing and decrementing on the server side to maintain the current connections. Further. I have applyed a threshold of maxumum clients per IP adress. If a client tries to join from a network that has alread reach the maximum capacity (from their specific IP), they are met with an informative message and the client closes automatically after some time. (13)
+
+This process took more time than I thought, and I had to decrypt and solve a good number of logic bugs. This included everything from correctly closing a socket/adding the (correct) client socket to the server, adding/erasing the IP objects from the map, and incrementing/decrement its numConnected integer.
+
+Chapter 6: Making The Application pretty
+-->
