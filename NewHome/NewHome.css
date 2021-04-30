@@ -1,0 +1,87 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Rubik&display=swap');
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+* {
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+html{
+    height: auto;
+    /*padding-left: 25px;
+    padding-right: 25px;
+    scroll-behavior: smooth;*/
+}
+
+body{
+    background-color:red;
+    background-position:center;
+    overflow-x: hidden;
+}
+
+.Wrapper{
+background-color: coral;
+width: 100%; /*change*/
+height: 100%; /*change*/
+padding: 1%;
+}
+
+.Content{
+    background-color:darkolivegreen;
+    padding: 50px; /*change*/
+    display: inline-block;
+    margin-top: 14%;
+}
+
+.HeadingContainer{
+ background-color: darkorchid;
+ max-width: 1140px;
+ width: 85%;
+}
+
+h1{
+    font-size: 350%;
+}
+.DescriptionContainer{
+background-color: grey;
+padding: 0px 50px 10px 0px;
+text-align: left;
+margin-top: -1%;
+}
+
+p{
+    font-size: large;
+    line-height: 0.4;
+}
+
+.FooterContainer{
+    position: fixed;
+    background-color:mediumseagreen;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    display:block;
+}
+ul {
+    padding:0;
+    list-style: none;
+}
+li {
+    vertical-align: top;
+    display: inline;
+}
+.social-icons a {
+    color: #fff;
+    text-decoration : none;
+}
+.fa-github, .fa-linkedin{
+    padding:10px 14px;
+    background-color:orange;
+}
+/*
+header:
+http://jsfiddle.net/gpz8avo6/1/
+https://stackoverflow.com/questions/19761202/css3-transform-skew-one-side
+*/
