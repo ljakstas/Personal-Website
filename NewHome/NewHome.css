@@ -18,41 +18,64 @@ body{
     background-color:red;
     background-position:center;
     overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
 }
 
 .Wrapper{
 background-color: coral;
 width: 100%; /*change*/
-height: 100%; /*change*/
-padding: 1%;
+min-height: 100vh; /*change*/
 }
 
 .Content{
     background-color:darkolivegreen;
-    padding: 50px; /*change*/
     display: inline-block;
-    margin-top: 14%;
+    margin-top: 250px;
+    margin-bottom: 50px;
+    margin-left: 10px;
+    width:80%;
+    min-width:450px;
+    max-height: 350px;
+    vertical-align: top;
 }
-
+/*@media (max-width: 650px) {
+    .Content {
+        min-width:100%;
+        background-color:#fff;
+    }
+}*/
 .HeadingContainer{
  background-color: darkorchid;
- max-width: 1140px;
- width: 85%;
+ width: 90%;
+ height: 200px;
 }
+.HeadingContainer h1{
+    font-size: 4.5vw;
+}
+/*@media (max-width: 1320px) {
+    .HeadingContainer h1 {
+        font-size: 375%;
+        
+    }
+}*/
 
-h1{
-    font-size: 350%;
-}
 .DescriptionContainer{
 background-color: grey;
-padding: 0px 50px 10px 0px;
 text-align: left;
-margin-top: -1%;
 }
 
 p{
     font-size: large;
-    line-height: 0.4;
+    /*line-height: 0.4;*/
+}
+.header{
+    background-color: aqua;
+    display: block;
+    z-index: 3;
+    float: right;
+    text-align: right;
+    width:40%;
 }
 
 .FooterContainer{
