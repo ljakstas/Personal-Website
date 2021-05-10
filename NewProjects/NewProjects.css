@@ -2,13 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Rubik&display=swap');
 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+/*
+-on min-width, move social icons to side
+-add repository gitub icon next to headers
+*/
 * {
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
 }
 
 html{
-    height: auto;
+    height: 100%;
     /*padding-left: 25px;
     padding-right: 25px;
     scroll-behavior: smooth;*/
@@ -19,14 +23,15 @@ html{
 body{
     background-position:center;
     overflow-x: hidden;
-    height: 98vh;
+    /*height: 98vh;*/
+    height: 90%;
     margin-top: 0;
     background-color: red;
 }
 
 .Wrapper{
 width: 100%; /*change*/
-min-height: auto; /*change*/
+min-height: 90%; /*change*/
 background-color: coral;
 }
 
@@ -38,31 +43,38 @@ background-color: coral;
     /*position: fixed;  check*/
     position: relative;
     background-color: darkslategray;
+    height: 700px;
 }
 
 .HeadingContainer{
     width: 100%;
     height: 45px;
-    margin-top: -1%;
+    margin-top: -0.5px;
     position: relative;
     background-color: dodgerblue;
     text-align: center;
     font-size: x-large;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .TableContainer{
     background-color: goldenrod;
-    width: 70%;
+    width: 82%;
     margin-left: auto;
     margin-right: auto;
+    height: 700px;
 }
 table{
     border-collapse: separate;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: auto;
+    margin-right: auto;
     background-color: green;
-    border-spacing:0 4vh;
-    margin-top: -0.5%;
+    border-spacing:0 4px;
+    margin-top: -0.5px;
+    width: 50%;
+    min-width: 400px;
+    height: 600px;
 }   
 tr{
 
@@ -75,10 +87,20 @@ td{
     width: 100%;
     text-align: left;
     margin-top: -2%;
+    display: inline-block;
 }
 .CellHeading h1{
     margin-left: 2%;
-    font-size: 190%;
+    font-size: 230%;
+    background-color: lightseagreen;
+    display: inline-block;
+}
+.Gitrepo{
+    float: right;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 8%;
+   
 }
 .CellHeading a{
     text-decoration: none;
@@ -97,59 +119,42 @@ td{
 }
 .CellContent p{
     margin-left: 2%;
+    font-size: large;
 }
-
-.CellStacks{
-    text-align: center;
-    float:right;
-    margin-top: 0.05%;
-    margin-right: 0.55vw;
-    /*margin-top: 530px;*/
-  }
-  
-  .CellStacks ul {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+.StackContent nav
+{
+    background-color:grey;
+    width: 100%;
+    
+    margin-top: -2%;
+}
+.StackContent ul{
     list-style: none;
-    transform: skew(-35deg);
-  }
-  
-  .CellStacks ul li {
-    background: #fff;
-    float: left;
-    border-right: 1px solid #eee;
-    box-shadow: 0 .5px 2px rgba(1,1,1,1);
-    text-transform: uppercase;
-    color: #fff;/*non-hover text color*/
-    font-weight: 300;
-    transition: all 0.3s linear;
-    background-color: #477886;
-    font-size: 75%;
-  }
-    
-  .CellStacks ul li:first-child {
-      border-radius: 0px 0px 0 0px;
-  }
-    
-  .CellStacks ul li:last-child {
-      border-right: none;
-      border-radius: 0 0px 0px 0;
-  }
-    
-  .CellStacks ul li:hover {
-      background: #285D6C; /*hover background color*/
-      color: #A3C0C8; /*hover text color*/
-  }
-    
-  .CellStacks ul li a {
-      display: block;
-      padding: 1em 2em;
-      color: inherit;
-      text-decoration: none;
-      transform: skew(25deg);
-  }
-
+    margin-top: 0;
+    background-color: lightpink;
+    padding: 3px;
+}
+.StackContent li{
+    background-color:lightgreen;
+    float: right;
+    padding-left: 2%;
+}
+.stack{
+    font-weight: bold;
+    color: red;
+}
+.stackdiv{
+   vertical-align: top;
+   text-align: center;
+    text-decoration: none;
+    padding-left: 5px;
+}
+.StackContent img{
+    vertical-align: top;
+    text-align: center;
+    width:30px;
+    height:30px;
+}
 .skew-menu{
     text-align: center;
     float:right;
@@ -204,7 +209,7 @@ td{
  
 
 .FooterContainer{
-    position: relative;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
