@@ -4,7 +4,7 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
 /*
 -on min-width, move social icons to side
--add repository gitub icon next to headers
+-glow a-project links (like social icons)
 */
 * {
     box-sizing: border-box;
@@ -26,13 +26,13 @@ body{
     /*height: 98vh;*/
     height: 90%;
     margin-top: 0;
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .Wrapper{
 width: 100%; /*change*/
 min-height: 90%; /*change*/
-background-color: coral;
+/*background-color: coral;*/
 }
 
 .Content{
@@ -42,7 +42,7 @@ background-color: coral;
     margin-top: 1vh;
     /*position: fixed;  check*/
     position: relative;
-    background-color: darkslategray;
+    /*background-color: darkslategray;*/
     height: 700px;
 }
 
@@ -51,60 +51,72 @@ background-color: coral;
     height: 45px;
     margin-top: -0.5px;
     position: relative;
-    background-color: dodgerblue;
+    /*background-color: dodgerblue;*/
     text-align: center;
     font-size: x-large;
     margin-left: auto;
     margin-right: auto;
+    color:#FFFFFF;
+    
 }
 
 .TableContainer{
-    background-color: goldenrod;
+    /*background-color: goldenrod;*/
     width: 82%;
     margin-left: auto;
     margin-right: auto;
     height: 700px;
+    
 }
 table{
-    border-collapse: separate;
     margin-left: auto;
     margin-right: auto;
-    background-color: green;
-    border-spacing:0 4px;
-    margin-top: -0.5px;
+    /*background-color: green;*/
+    border-spacing:0 50px;
     width: 50%;
     min-width: 400px;
-    height: 600px;
+    max-width: 650px;
+    height: auto;
+    
 }   
 tr{
-
+    background-color: rgba(24, 50, 64, .7); 
+    -webkit-box-shadow:0 0 8x rgb(212, 181, 106); 
+    -moz-box-shadow: 0 0 8px rgb(212, 181, 106); 
+    box-shadow:0 0 12px rgb(4, 38, 56);
 }
 td{
-    border: 1px solid red;
+    border: 1px solid rgb(4, 38, 56);
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 .CellHeading{
-    background-color: hotpink;
+    /*background-color: hotpink;*/
     width: 100%;
     text-align: left;
-    margin-top: -2%;
+    margin-top: -20px;
+    margin-bottom: -12px;
     display: inline-block;
 }
 .CellHeading h1{
-    margin-left: 2%;
+    margin-left: 10px;
     font-size: 230%;
-    background-color: lightseagreen;
+    /*background-color: lightseagreen;*/
     display: inline-block;
+    font-weight: 15;
+    
 }
 .Gitrepo{
     float: right;
     text-align: center;
     vertical-align: top;
-    margin-top: 8%;
+    margin-top: 31px;
+    margin-right: 18px;
    
 }
 .CellHeading a{
     text-decoration: none;
-    color:black;
+    color:ivory;
 }
 .CellHeading a:hover{
     text-decoration: none;
@@ -112,36 +124,41 @@ td{
 }
 
 .CellContent{
-    background-color:powderblue;
+    /*ackground-color:powderblue;*/
     width: 100%;
     text-align: left;
-    margin-top: -2%;
+    margin-top: -8px;
 }
 .CellContent p{
-    margin-left: 2%;
+    margin-left: 10px;
     font-size: large;
+    color:lightgray;
+    font-weight: 300;
+}
+.StackContent
+{
+    margin-right: 18px;
 }
 .StackContent nav
 {
-    background-color:grey;
+    /*background-color:grey;*/
     width: 100%;
-    
-    margin-top: -2%;
+    margin-top: -8px;
 }
 .StackContent ul{
     list-style: none;
     margin-top: 0;
-    background-color: lightpink;
+    /*background-color: lightpink;*/
     padding: 3px;
 }
 .StackContent li{
-    background-color:lightgreen;
+    /*background-color:lightgreen;*/
     float: right;
     padding-left: 2%;
 }
 .stack{
     font-weight: bold;
-    color: red;
+    color:gainsboro;
 }
 .stackdiv{
    vertical-align: top;
@@ -208,24 +225,28 @@ td{
  
  
 
-.FooterContainer{
-    position: absolute;
+  .FooterContainer{
+    position: fixed;
+    
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
     display:block;
-    /*margin-top: 200px;
-    background-color: darkturquoise;*/
 }
 .FooterContainer ul {
     padding:0;
     list-style: none;
-    margin-top: 2%;
+    transition: all 0.5s ease;
 }
 .FooterContainer li {
     vertical-align: top;
     display: inline-flex;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.fa{
+    transition: all 0.5s ease;
 }
 .iconContainer{
     padding: 5px;
@@ -234,14 +255,15 @@ td{
     color: #fff;
     text-decoration : none;
 }
-.social-icons li:hover{
-    background-color: navy ;
+.FooterContainer ul li:hover .fa-github{
+    text-shadow:0 0 20px #3b5998;
+    color: #A3C0C8;
 }
-.fa-github{
+.FooterContainer ul li:hover .fa-linkedin{
+    text-shadow:0 0 20px #3b5998;
+    color: #A3C0C8;
 }
-.fa-linkedin{
-     
-}
+
 /*
 header:
 http://jsfiddle.net/gpz8avo6/1/
