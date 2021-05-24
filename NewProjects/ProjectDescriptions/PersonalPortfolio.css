@@ -18,6 +18,7 @@ html{
     scroll-behavior: smooth;*/
     margin-bottom: 0%;
     background-image: url(../../Pics/TempBackground.jpg);
+    background-size: cover;
 }
 
 body{

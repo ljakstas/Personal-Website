@@ -28,22 +28,39 @@
                         <tr>
                             <td>
                                 <div class = "CellContent">
-                                    <p>When I wrote my resume, I realized that I had skills in web development with nothing to show, so I decided it would be appropriate to design a personal web portfolio--one that could showcase my ability to create websites.
-                                    </p>
+                                    <h1>Background</h1>
+                                    <hr style="margin: 0 15px 0 15px; border-top: 2px solid aqua;">
+                                    <p>With my eyes set upon the idea of a chat application, I began with lots of research. I knew I needed some sort of networking API. As I became familiar with the idea of sockets, I came across a library to use for my project (that also was compatable with CPP). </p>
                                     <p>
-                                    I wrote this website using Ruby on Rails, HTML, CSS, and JS. The app was deployed with Heroku and uses PostgreSQL for database design. It contains CRUDing that is gated by an administrative login.</p>
+                                    <a href = "https://docs.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2">Winsock</a> is Microsoft's Windows Socket API. "Winsock enables programmers to create advanced Internet, intranet, and other network-capable applications to transmit application data across the wire, independent of the network protocol being used." With Winsock, I would use TCP  socket connections rather than UDP to ensure data is sent/received.</p>
+                                    <p> I first made the project using standard terminal, but later transitioned into a <a href = "https://docs.microsoft.com/en-us/cpp/dotnet/dotnet-programming-with-cpp-cli-visual-cpp?view=msvc-160">.NET framwork</a> via Visual Basic's  C++/CLI support.
+                                    </p>
+                                    
+                                    <h1 >Project</h1>
+                                    <hr style="margin: 0 15px 0 15px; border-top: 2px solid aqua;">
+                                    <p>
+                                    I first implemented a basic server/client connection to send data through a single pair of socekts. The client would send data (a message) to the server and the server would echo this message back to the client. As I optimized this, I began adding more clients to the server. Now Client 1 could send a message to the server, and the message would echo back to both of the clients. However, this process was syncronous, a.k.a. cyclic: the clients had to send messages in order rather than whenever they want. I would need to make the server asynchronous.</p>
+
+                                    <p>To do this we would need more threads: multi-threading. With this, we can check if any client is trying to send data, rather than just one. After implementing multi-threading and successful multi-client communication, it was time to make the program pretty.</p>
+                                    <p>Visual Studio/Basic's .Net/clr framework does not support some the processes a standard environment could. To get around this, one would have to use System processes. After transfering my project to the new environment and added visuals, it was now complete.</p>
                                 </div>
                             </td>
                         </tr>
-
                     </table>
+                    <div class = "ButtonContainer">
+                    <a href = "#">
+                        <i class="fa fa-arrow-left fa-4x"></i></i></a>
+                        <p>pp</p>
+                    </a>
+                    </div>
                 </div>
+                
             </div>
-
+            
             
 
         </div>
-        <div class = "FooterContainer">
+        <!--<div class = "FooterContainer">
             <ul class="social-icons">
                 <li>
                     <div class = "iconContainer">
@@ -54,9 +71,11 @@
                 <li>
                     <div class = "iconContainer">
                     <a href="" class="social-icon">
-                    <i class="fa fa-linkedin fa-2x"></i></a></li>
+                    <i class="fa fa-linkedin fa-2x"></i></a>
+                
                     </div>
+                </li>
             </ul>
-        </div> 
+        </div> -->
     </body>
 </html>

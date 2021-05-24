@@ -18,23 +18,33 @@ html{
     scroll-behavior: smooth;*/
     margin-bottom: 0%;
     background-image: url(../../Pics/TempBackground.jpg);
-}
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    top:0px;
+    left:0px;
+    width: 100vw;
+    height: 100vh;
+
+  }
 
 body{
-    background-position:center;
     overflow-x: hidden;
+    background-position:center;
     /*height: 98vh;*/
-    height: 90%;
+    height: auto;
     margin-top: 0;
     /*background-color: red;*/
+    
 }
 
 .Wrapper{
 width: 100%; /*change*/
 min-height: 90%; /*change*/
 /*background-color: coral;*/
-}
 
+}
 .Content{
     width:100%;
     vertical-align: top;
@@ -44,6 +54,7 @@ min-height: 90%; /*change*/
     position: relative;
     /*background-color: darkslategray;*/
     height: 700px;
+    
 }
 
 .HeadingContainer{
@@ -61,7 +72,7 @@ min-height: 90%; /*change*/
 }
 
 .TableContainer{
-    /*background-color: goldenrod;*/
+
     width: 82%;
     margin-left: auto;
     margin-right: auto;
@@ -96,6 +107,14 @@ td{
     width: 100%;
     text-align: left;
     margin-top: -8px;
+    background-color:darkblue;
+}
+.CellContent h1{
+    margin-left: 15px;
+    margin-right: 15px;
+    color:lightgray;
+    font-weight: 300;
+    margin-bottom: 0;
 }
 .CellContent p{
     margin-left: 15px;
@@ -104,7 +123,25 @@ td{
     color:lightgray;
     font-weight: 300;
 }
+.CellContent a{
+    text-decoration: none;
+    color: goldenrod;
+}
+.CellContent a:hover{
+    color:peru;
+}
+.ButtonContainer{
+ background-color: aquamarine;   
+ margin-left: auto;
+    margin-right: auto;
+    /*background-color: green;*/
+    
+    width: 50%;
+    min-width: 400px;
+    max-width: 650px;
+    height: auto;
 
+}
 .skew-menu{
     text-align: center;
     float:right;
@@ -155,50 +192,4 @@ td{
       text-decoration: none;
       transform: skew(25deg);
   }
- 
- 
-
-  .FooterContainer{
-    position: fixed;
-    
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    display:block;
-}
-.FooterContainer ul {
-    padding:0;
-    list-style: none;
-    transition: all 0.5s ease;
-}
-.FooterContainer li {
-    vertical-align: top;
-    display: inline-flex;
-    cursor: pointer;
-    transition: all 0.5s ease;
-}
-.fa{
-    transition: all 0.5s ease;
-}
-.iconContainer{
-    padding: 5px;
-}
-.social-icons a {
-    color: #fff;
-    text-decoration : none;
-}
-.FooterContainer ul li:hover .fa-github{
-    text-shadow:0 0 20px #3b5998;
-    color: #A3C0C8;
-}
-.FooterContainer ul li:hover .fa-linkedin{
-    text-shadow:0 0 20px #3b5998;
-    color: #A3C0C8;
-}
-
-/*
-header:
-http://jsfiddle.net/gpz8avo6/1/
-https://stackoverflow.com/questions/19761202/css3-transform-skew-one-side
-*/
+  
