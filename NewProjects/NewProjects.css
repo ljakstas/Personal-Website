@@ -121,7 +121,8 @@ td{
 }
 .CellHeading a:hover{
     text-decoration: none;
-    color:darkslategrey;
+    color:rgb(212, 181, 106);
+    transition: 0.4s;
 }
 
 .CellContent{
